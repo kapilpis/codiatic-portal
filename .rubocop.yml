@@ -1,0 +1,10 @@
+require: rubocop-rails
+
+Style/StringLiterals:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/GlobalStdStream:
+  Enabled: false
