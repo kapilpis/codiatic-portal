@@ -1,0 +1,89 @@
+<div class="card border">
+  <div class="row g-0">
+    <div class="col-3 d-none d-md-block border-end">
+      <div class="card-body">
+        <h4 class="subheader">General</h4>
+        <div class="list-group list-group-transparent flex-column nav nav-organization-settings" id="organization-settings-tab" role="tablist" aria-orientation="vertical">
+          <button class="list-group-item list-group-item-action d-flex align-items-center nav-link active"
+					id="organization-details-tab" data-bs-toggle="tab" data-bs-target="#organization-details" type="button" role="tab" aria-controls="organization-details" aria-selected="true">
+            Details
+            <small class="text-muted ms-auto">6</small>
+          </button>
+          <button class="list-group-item list-group-item-action d-flex align-items-center nav-link"
+					id="organization-restricted-tab" data-bs-toggle="tab" data-bs-target="#organization-restricted" type="button" role="tab" aria-controls="organization-restricted" aria-selected="false">
+            Restricted
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col d-flex flex-column">
+      <div class="card-body tab-content" id="organization-settings-tabContent">
+        <div class="tab-pane show active" id="organization-details" role="tabpanel" aria-labelledby="organization-details-tab" tabindex="0">
+          <h2 class="mb-4">Details</h2>
+          <%= form_with(model: organization) do |form| %>
+            <% if organization.errors.any? %>
+              <div style="color: red">
+                <h2><%= pluralize(organization.errors.count, "error") %> prohibited this organization from being saved:</h2>
+                <ul>
+                  <% organization.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+                        <div class="form-group mb-3 row">
+                          <%= form.label :title, class: "form-label col-3 col-form-label" %>
+              <div class="col">
+                <%= form.text_field :title, class:"form-control" %>
+              </div>
+            
+            </div>
+                        <div class="form-group mb-3 row">
+                          <%= form.label :phone, class: "form-label col-3 col-form-label" %>
+              <div class="col">
+                <%= form.text_field :phone, class:"form-control" %>
+              </div>
+            
+            </div>
+                        <div class="form-group mb-3 row">
+                          <%= form.label :email, class: "form-label col-3 col-form-label" %>
+              <div class="col">
+                <%= form.text_field :email, class:"form-control" %>
+              </div>
+            
+            </div>
+                        <div class="form-group mb-3 row">
+                          <%= form.label :website, class: "form-label col-3 col-form-label" %>
+              <div class="col">
+                <%= form.text_field :website, class:"form-control" %>
+              </div>
+            
+            </div>
+                        <div class="form-group mb-3 row">
+                          <%= form.label :description, class: "form-label col-3 col-form-label" %>
+              <div class="col">
+                <%= form.text_area :description, class:"form-control" %>
+              </div>
+            
+            </div>
+                        <div class="form-group mb-3 row">
+                          <%= form.label :status, class: "form-label col-3 col-form-label" %>
+              <div class="col">
+                <%= form.number_field :status, class:"form-control" %>
+              </div>
+            
+            </div>
+            
+            <div class="form-footer">
+              <%= form.submit "Save", class:"btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="tab-pane" id="organization-restricted" role="tabpanel" aria-labelledby="organization-restricted-tab" tabindex="0">
+          <h2 class="mb-4">Restricted</h2>
+            <%= button_to "Destroy this organization", @organization, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}}, class: "btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
